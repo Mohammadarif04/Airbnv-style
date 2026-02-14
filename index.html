@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Clone - Find Your Stay</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🏠 Staybnb</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Where are you going?" id="locationSearch">
+                <input type="date" id="checkin">
+                <input type="date" id="checkout">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Filter Sidebar -->
+        <aside class="filters-sidebar">
+            <div class="filter-section">
+                <h3>Filters</h3>
+                <div class="filter-group">
+                    <h4>Price per night</h4>
+                    <div class="price-range">
+                        <input type="range" id="priceMin" min="0" max="500" value="50">
+                        <input type="range" id="priceMax" min="0" max="500" value="300">
+                        <div class="price-values">
+                            <span id="priceMinVal">₹50</span> - <span id="priceMaxVal">₹300</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h4>Property Type</h4>
+                    <label><input type="checkbox" data-filter="house"> Entire House</label>
+                    <label><input type="checkbox" data-filter="apartment"> Apartment</label>
+                    <label><input type="checkbox" data-filter="room"> Private Room</label>
+                </div>
+                <div class="filter-group">
+                    <h4>Rooms & Beds</h4>
+                    <label><input type="checkbox" data-filter="bedrooms-2"> 2+ bedrooms</label>
+                    <label><input type="checkbox" data-filter="beds-3"> 3+ beds</label>
+                </div>
+                <button class="clear-filters" onclick="clearFilters()">Clear all</button>
+            </div>
+        </aside>
+
+        <!-- Listings Grid -->
+        <main class="listings-main">
+            <div class="listings-header">
+                <div>
+                    <h2 id="listingCount">12,458 stays</h2>
+                    <button class="sort-btn" onclick="toggleSort()">Sort by price <span>▼</span></button>
+                </div>
+            </div>
+            <div class="listings-grid" id="listingsGrid"></div>
+        </main>
+    </div>
+
+    <!-- Property Modal -->
+    <div class="modal" id="propertyModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-gallery">
+                <div class="main-image" id="modalMainImage"></div>
+                <div class="thumbnail-strip" id="modalThumbnails"></div>
+            </div>
+            <div class="modal-details">
+                <div class="property-header">
+                    <div class="rating">⭐ <span id="modalRating">4.8</span> (124 reviews)</div>
+                    <h1 id="modalTitle">Cozy Apartment</h1>
+                    <div class="property-info">
+                        <span id="modalRooms">2 beds</span>
+                        <span id="modalBathrooms">1 bath</span>
+                        <span id="modalGuests">4 guests</span>
+                    </div>
+                </div>
+                <div class="property-description" id="modalDescription"></div>
+                <div class="modal-price-section">
+                    <div class="price-info">
+                        <span class="price-per-night" id="modalPrice">₹2,500</span>
+                        <span class="total-price" id="modalTotal">₹7,500 total</span>
+                    </div>
+                    <button class="reserve-btn">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
